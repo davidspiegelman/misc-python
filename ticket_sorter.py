@@ -38,8 +38,8 @@ def sort_tickets_fast(tickets):
     Find the start city using the difference of two sets.
     Append the tickets to the starting ticket.'''
     
-    unique_cities = {item for sublist in (x.as_tuple for x in tickets) for item in sublist}
-    arrival_cities = {x.arrive for x in tickets}
+    unique_cities = {item for sublist in (ticket.as_tuple for ticket in tickets) for item in sublist}
+    arrival_cities = {ticket.arrive for ticket in tickets}
     start_city = unique_cities.difference(arrival_cities)
     start_ticket_num = [i for i, v in enumerate(tickets) if v.depart in start_city][0]
     sorted_tickets = [tickets.pop(start_ticket_num)]
