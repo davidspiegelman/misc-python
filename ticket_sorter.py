@@ -5,8 +5,10 @@ class Ticket:
     def __init__(self, depart, arrive):
         self.depart = depart
         self.arrive = arrive
+        
     def __repr__(self):
         return f'({self.depart}, {self.arrive})'
+    
     @property
     def as_tuple(self):
         return self.depart, self.arrive
@@ -15,7 +17,8 @@ class Ticket:
 def sort_tickets_slow(tickets):
     '''Brute force method.
     Create all permutations of the tickets and
-    find the one that is in order'''
+    find the one that is in order.'''
+    
     ticket_permutations = list(permutations(tickets, len(tickets)))
     for i in range(len(ticket_permutations)):
         tickets_in_order = 1
@@ -34,6 +37,7 @@ def sort_tickets_fast(tickets):
     '''The more elegant method.
     Find the start city using the difference of two sets.
     Append the tickets to the starting ticket.'''
+    
     unique_cities = {item for sublist in [x.as_tuple for x in tickets] for item in sublist}
     arrival_cities = {x.arrive for x in tickets}
     start_city = unique_cities.difference(arrival_cities)
