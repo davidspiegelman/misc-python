@@ -42,9 +42,8 @@ def sort_tickets_fast(tickets):
     arrival_cities = {x.arrive for x in tickets}
     start_city = unique_cities.difference(arrival_cities)
     start_ticket_num = [i for i, v in enumerate(tickets) if v.depart in start_city][0]
-    
-    sorted_tickets = list()
-    sorted_tickets.append(tickets.pop(start_ticket_num))
+    sorted_tickets = [tickets.pop(start_ticket_num)]
+
     while len(tickets) >= 1:
         for i in range(len(tickets)):
             if sorted_tickets[-1].arrive == tickets[i].depart:
