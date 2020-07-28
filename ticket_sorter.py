@@ -26,6 +26,8 @@ def sort_tickets_slow(tickets):
         for j in range(len(tickets) - 1):
             if tickets_to_check[j].arrive == tickets_to_check[j + 1].depart:
                 tickets_in_order += 1
+            else:
+                break
 
         if tickets_in_order == len(tickets):
             break
@@ -55,7 +57,7 @@ def sort_tickets_fast(tickets):
 
 
 def format_itinerary(tickets):
-    result_list = [x.depart for x in tickets]
+    result_list = [ticket.depart for ticket in tickets]
     result_list.append(tickets[-1].arrive)
     return ' -> '.join(result_list)
 
