@@ -43,7 +43,7 @@ def sort_tickets_fast(tickets):
     unique_cities = {item for sublist in (ticket.as_tuple for ticket in tickets) for item in sublist}
     arrival_cities = {ticket.arrive for ticket in tickets}
     start_city = unique_cities.difference(arrival_cities)
-    start_ticket_num = [i for i, v in enumerate(tickets) if v.depart in start_city][0]
+    start_ticket_num = [i for i, ticket in enumerate(tickets) if ticket.depart in start_city][0]
     sorted_tickets = [tickets.pop(start_ticket_num)]
 
     while len(tickets) >= 1:
